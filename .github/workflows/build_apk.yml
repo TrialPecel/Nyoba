@@ -1,0 +1,52 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+    
+    - name: Get dependencies
+      run: flutter pub get
+    
+    - name: Build APK
+      run: flutter build apk --release
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: gallery-app-apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+    
+    - name: Create Release
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: build/app/outputs/flutter-apk/app-release.apk
+        tag_name: v1.0.${{ github.run_number }}
+        name: Gallery App v1.0.${{ github.run_number }}
+        body: |
+          Gallery App - Modern Flutter Gallery with Animations
+          
+          Features:
+          - Beautiful masonry photo grid
+          - Hero animations
+          - Dark/Light theme
+          - Search functionality
+          - Album management
+          
+          Download APK below and install on your Android device.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
