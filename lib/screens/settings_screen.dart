@@ -71,7 +71,7 @@ class SettingsScreen extends StatelessWidget {
                     trailing: Switch(
                       value: true,
                       onChanged: (_) {},
-                      activeThumbColor: const Color(0xFF6366F1),
+                      activeColor: const Color(0xFF6366F1),
                     ),
                   ),
                   _buildPreferenceTile(
@@ -83,7 +83,7 @@ class SettingsScreen extends StatelessWidget {
                     trailing: Switch(
                       value: false,
                       onChanged: (_) {},
-                      activeThumbColor: const Color(0xFF6366F1),
+                      activeColor: const Color(0xFF6366F1),
                     ),
                   ),
                   _buildPreferenceTile(
@@ -95,7 +95,7 @@ class SettingsScreen extends StatelessWidget {
                     trailing: Switch(
                       value: true,
                       onChanged: (_) {},
-                      activeThumbColor: const Color(0xFF6366F1),
+                      activeColor: const Color(0xFF6366F1),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -193,7 +193,7 @@ class SettingsScreen extends StatelessWidget {
               Switch(
                 value: isDark,
                 onChanged: (_) => themeProvider.toggleTheme(),
-                activeThumbColor: const Color(0xFF6366F1),
+                activeColor: const Color(0xFF6366F1),
               ),
             ],
           ),

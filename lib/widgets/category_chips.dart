@@ -78,11 +78,11 @@ class CategoryChips extends StatelessWidget {
                   ),
                 ),
               ),
-            )
-                .animate(delay: Duration(milliseconds: index * 50))
-                .fadeIn(duration: const Duration(milliseconds: 400))
-                .slideX(begin: 0.2, end: 0);
-          };
+            ),
+          )
+              .animate(delay: Duration(milliseconds: index * 50))
+              .fadeIn(duration: const Duration(milliseconds: 400))
+              .slideX(begin: 0.2, end: 0);
         },
       ),
     );

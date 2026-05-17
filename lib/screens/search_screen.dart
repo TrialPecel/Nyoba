@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import '../models/photo_model.dart';
 import '../providers/gallery_provider.dart';
 import '../widgets/photo_grid.dart';
 
@@ -26,7 +27,7 @@ class _SearchScreenState extends State<SearchScreen> {
     final galleryProvider = context.watch<GalleryProvider>();
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final searchResults = _query.isEmpty
+    final List<PhotoModel> searchResults = _query.isEmpty
         ? []
         : galleryProvider.photos
             .where((p) =>
